@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+	
+	<head>
+		<meta charset="utf-8">
+		<title>PH GO - HTML</title>
+		<link href="style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+
+	</head>
+	<body>
+		
+<!--
+		<script>
+			$(function() {
+						var t;
+						return (
+						(t = function() {
+						var t, e, i, s, n, r, o, a, l, h, c, u, p, d, f, m, g, _;
+						(c = document.getElementById("waves")),
+						(_ = function(t, e) {
+						var i;
+						for (i = 0; t > i; ) e(i), i++;
+						}),
+						(d = function(t) {
+						return function(e) {
+						return e[t]();
+						};
+						}),
+						(m = function(t, e) {
+						return t + (e - t) * Math.random();
+						}),
+						(h = function(t, e) {
+						var i, s, n, r, o, a;
+						for (
+						i = void 0,
+						s = void 0,
+						o = void 0,
+						a = void 0,
+						n = 1,
+						r = t.length - 2;
+						r > n;
+
+						)
+						(i = t[n]),
+						(s = t[n + 1]),
+						(o = 0.5 * (i.x + s.x)),
+						(a = 0.5 * (i.y + s.y)),
+						e.quadraticCurveTo(i.x, i.y, o, a),
+						n++;
+						(i = t[n]), (s = t[n + 1]), e.quadraticCurveTo(i.x, i.y, s.x, s.y);
+						}),
+						(p = function(t, e) {
+						var i, s;
+						return (i = e.x - t.x), (s = e.y - t.y), Math.sqrt(i * i + s * s);
+						}),
+						(u = function(t, e, i) {
+						return e > t ? e : t > i ? i : t;
+						}),
+						$(c).length &&
+						((g = {
+						width: window.innerWidth,
+						height: window.innerHeight
+						}),
+						(f = {
+						color: "#85C1E9",
+						waveAmplitude: 10,
+						waveRadius: 100,
+						waveElasticity: 0.7,
+						waveStrength: 0.011,
+						waveMouse: 40,
+						waveMax: 200,
+						waveComeUp: function() {},
+						waveRiseSpeed: 10,
+						lineWidth: 5,
+						waveLength: 25,
+						distance: 60
+						}),
+						(s = (function() {
+						var t, e, i;
+						return (
+						(t = {
+						x: 0,
+						y: 0,
+						bind: function(t) {
+						  t.addEventListener("mousemove", e),
+							t.addEventListener("touchmove", i);
+						},
+						unbind: function(t) {
+						  t.removeEventListener("mousemove", e),
+							t.removeEventListener("touchmove", i);
+						}
+						}),
+						(e = function(e) {
+						(t.x = e.pageX - window.scrollX),
+						  (t.y = e.pageY - window.scrollY);
+						}),
+						(i = function(e) {
+						(t.x = e.touches[0].pageX), (t.y = e.touches[0].pageY);
+						}),
+						t
+						);
+						})()),
+						(r = {
+						width: 1,
+						height: 1,
+						set: function(t) {
+						(r.width = t.width), (r.height = t.height);
+						}
+						}),
+						(o = function(t) {
+						var e, i, s;
+						(s = void 0),
+						(i = function() {
+						f.waveComeUp = this.start.bind(this);
+						}),
+						(e = function(e) {
+						var i;
+						(s = []),
+						  (i = f.distance),
+						  _(e / i, function(e) {
+							s.push(new a(0, e * i + 10, t, m(0.08, 0.12) * e));
+						  });
+						}),
+						(this.render = function() {
+						(t.strokeStyle = f.color),
+						  (t.lineWidth = f.lineWidth),
+						  (t.lineCap = "round"),
+						  t.beginPath(),
+						  s.forEach(d("render")),
+						  t.stroke();
+						}),
+						(this.setSize = function(t, i) {
+						e(i),
+						  s.forEach(function(e) {
+							e.setSize(t, i);
+						  });
+						}),
+						(this.start = function() {
+						s.forEach(d("start"));
+						}),
+						i.call(this);
+						}),
+						(a = function(e, i, n, r) {
+						var o, a, l, c, u, p, m, g, v, y;
+						(o = void 0),
+						(g = void 0),
+						(a = void 0),
+						(c = void 0),
+						(u = void 0),
+						(v = void 0),
+						(y = void 0),
+						(l = function() {
+						var s, n, a, l, h, u;
+						(v = e),
+						  (y = i),
+						  (o = []),
+						  (c = {
+							x: 0,
+							y: 0
+						  }),
+						  (s = void 0),
+						  (n = 0),
+						  (l = -f.waveAmplitude),
+						  (u = f.waveAmplitude),
+						  (a = r),
+						  (h = 0.4),
+						  _(window.innerWidth / f.waveLength, function() {
+							(s = new t(n, 0, l, u, a)),
+							  s.setOrigin(n + v, y),
+							  o.push(s),
+							  (n += 90),
+							  (a += h),
+							  a > 1 &&
+								_(Math.floor(a), function() {
+								  a--, (l *= -1), (u *= -1);
+								});
+						  });
+						}),
+						(p = function() {
+						var t;
+						(t = Math.min(y, s.y + i)),
+						  (y += (t - y) / f.waveRiseSpeed),
+						  m(),
+						  o.forEach(function(t) {
+							t.update(c, y);
+						  });
+						}),
+						(m = function() {
+						return u
+						  ? ((c.x = s.x - u.x),
+							(c.y = s.y - u.y),
+							void (u = {
+							  x: s.x,
+							  y: s.y
+							}))
+						  : void (u = {
+							  x: s.x,
+							  y: s.y
+							});
+						}),
+						(this.render = function() {
+						p(),
+						  n.save(),
+						  n.translate(v, y),
+						  n.moveTo(o[0].x, o[0].y),
+						  h(o, n),
+						  n.restore();
+						}),
+						(this.setSize = function(t, e) {
+						var i;
+						(g = t),
+						  (a = e),
+						  (i = t / (o.length - 1)),
+						  o.forEach(function(t, e) {
+							(t.x = i * e), t.setOrigin(t.x, y);
+						  });
+						}),
+						(this.onAmpChange = function() {
+						o.forEach(d("onAmpChange"));
+						}),
+						(this.start = function() {
+						y = a + 300 + 0.4 * i;
+						}),
+						l.call(this);
+						}),
+						(t = function(t, e, r, o, a) {
+						var l, h, c, u, d;
+						(d = void 0),
+						(c = void 0),
+						(u = void 0),
+						(h = function() {
+						(d = new n()),
+						  (c = new i(r, o, a)),
+						  (u = {}),
+						  (this.x = t),
+						  (this.y = e);
+						}),
+						(l = function() {
+						var t, e;
+						return (t = p(s, u)), (e = f.waveRadius), e > t ? 1 - t / e : 0;
+						}),
+						(this.update = function(t, e) {
+						var i, s;
+						(u.y = e),
+						  (i = l()),
+						  (s = {
+							x: t.x * i * f.waveMouse,
+							y: t.y * i * f.waveMouse
+						  }),
+						  i > 0 && d.shoot(s),
+						  d.update(),
+						  c.update(),
+						  (this.y = c.get() + d.y);
+						}),
+						(this.onAmpChange = function() {
+						c.onAmpChange();
+						}),
+						(this.setOrigin = function(t, e) {
+						(u.x = t), (u.y = e);
+						}),
+						h.call(this);
+						}),
+						(i = function(t, e, i) {
+						var s, n, r, o, a, l, h;
+						(s = 0.02),
+						(n = void 0),
+						(h = void 0),
+						(o = void 0),
+						(l = void 0),
+						(a = void 0),
+						(r = function() {
+						this.onAmpChange();
+						}),
+						(this.setRange = function(t, e) {
+						(l = t), (a = e);
+						}),
+						(this.update = function() {
+						(i += s),
+						  i > 1 && ((i = 0), (t = e), (e = n > e ? m(h, a) : m(l, o)));
+						}),
+						(this.get = function() {
+						var s;
+						return (
+						  (s = (Math.cos((1 + i) * Math.PI) + 1) / 2), t + s * (e - t)
+						);
+						}),
+						(this.onAmpChange = function() {
+						(l = -f.waveAmplitude),
+						  (a = f.waveAmplitude),
+						  (n = l + (a - l) / 2),
+						  (h = l + 0.75 * (a - l)),
+						  (o = l + 0.25 * (a - l));
+						}),
+						r.call(this);
+						}),
+						(n = function() {
+						var t, e, i, s, n, r, o, a, l;
+						(i = 0),
+						(s = 0),
+						(a = 0),
+						(l = 0),
+						(n = 0),
+						(r = 0),
+						(o = void 0),
+						(e = function() {
+						(this.x = 0), (this.y = 0);
+						}),
+						(t = function() {
+						(n = 0), (r = 0);
+						}),
+						(this.update = function() {
+						(a = n - this.x),
+						  (l = r - this.y),
+						  (i = i * f.waveElasticity + a * f.waveStrength),
+						  (s = s * f.waveElasticity + l * f.waveStrength),
+						  (this.x += i),
+						  (this.y += s);
+						}),
+						(this.shoot = function(e) {
+						(n = u(e.x, -f.waveMax, f.waveMax)),
+						  (r = u(e.y, -f.waveMax, f.waveMax)),
+						  clearTimeout(o),
+						  (o = setTimeout(t, 100));
+						}),
+						e.call(this);
+						}),
+						(e = function(t, e) {
+						var i, n, a, l, h, c;
+						(n = void 0),
+						(c = void 0),
+						(a = void 0),
+						(i = void 0),
+						(l = function() {
+						(n = t.getContext("2d")),
+						  (window.canvasCTX = n),
+						  setTimeout(function() {
+							s.bind(document);
+						  }, 1e3),
+						  r.set(e),
+						  (i = new o(n)),
+						  this.setSize(e.width, e.height),
+						  i.start(),
+						  requestAnimationFrame(h);
+						}),
+						(h = function() {
+						n.setTransform(1, 0, 0, 1, 0, n.clearRect(0, 0, c, a)),
+						  n.save(),
+						  i.render(),
+						  n.restore(),
+						  requestAnimationFrame(h);
+						}),
+						(this.setSize = function(e, s) {
+						(t.width = r.width = c = e),
+						  (t.height = r.height = a = s),
+						  i.setSize(e, s);
+						}),
+						l.call(this);
+						}),
+						(l = new e(c, g)),
+						window.addEventListener(
+						"resize",
+						function() {
+						l.setSize(window.innerWidth, window.innerHeight);
+						},
+						!1
+						));
+						}),
+						t(),
+						$(document).on("pageInit", t)
+						);
+						});
+		</script>
+-->
+		<script>
+			window.onload = function moveClouds(){
+				/* clouds 1 & 2 move to the left 
+				clouds 3 & 4 to the right */
+				for(i = 1; i < 5; i++){
+					var cloud = 
+					document.getElementById("cloud" + i);
+					cloud.style.transitionTimingFunction = "ease-out";
+					cloud.style.transitionDuration = "10000ms";
+					var top =  window.getComputedStyle(cloud, null).getPropertyValue("top");
+
+					topValue = parseInt(top);
+					topValue = topValue - 800;
+					top = topValue + "px";
+
+					cloud.style.top = top;
+
+					var left = window.getComputedStyle(cloud, null).getPropertyValue("left");
+					leftValue = parseInt(left);
+
+					if(i < 3){
+					leftValue = leftValue - 1000;
+					}else {
+					leftValue = leftValue + 1000;
+					}
+					left = leftValue + "px";
+
+					cloud.style.left = left;
+
+				}
+			}
+		</script>
+		
+		<header id="header">
+			
+			<a href = "#" class = "logo"><img src="phgo_logo"></a>
+			<ul>
+				<li><a href="#" class="active">Home</a></li>
+				<div class="dropdown">
+					<li><a href="#" >Store</a></li>
+					<div class="dropdown-content">
+						<li><a href="luzon/luzon-store.html">Luzon</a></li>
+						<li><a href="#">Visayas</a></li>
+						<li><a href="#">Mindanao</a></li>
+					</div>
+				</div>
+				<li><a href="#">About Us</a></li>
+			</ul>
+		</header>
+
+		<section>
+<!--			<h1 id="text">Hop on Island!</h1>-->
+			<h1>
+				<span>H</span>
+				<span>O</span>
+				<span>P</span>
+				<span> </span>
+				<span>O</span>
+				<span>N</span>
+				<span> </span>
+				<span>I</span>
+				<span>S</span>
+				<span>L</span>
+				<span>A</span>
+				<span>N</span>
+				<span>D</span>
+				<span>!</span>
+			</h1>
+			<div class="bottom">
+				<img src = "index-img/bottom.png">
+			</div>
+			<div class="islands">
+				<div class ="mindanao" >
+					<a href="#"><img src ="index-img/mindanao2.png" class ="mindanao1"></a>
+					<span>Aside from mountain resorts, Mindanao prides itself in a great number of beautiful and refreshing waterfalls.</span>
+					<div class="after">
+						<img src="index-img/mindanao2arrow.png">
+					</div>
+				</div>
+				<div class ="visayas">
+					<a href="#"><img src ="index-img/visayas2.png" class ="visayas1"></a>
+					<span>Visayas broadly share a maritime culture with strong Roman Catholic traditions merged with cultural elements through centuries of interaction and inter-migrations.</span>
+					<div class="after">
+						<img src="index-img/visayas2arrow.png">
+					</div>
+				</div>
+
+				<div class ="luzon">
+					<a href="luzon/luzon-store.html"><img src ="index-img/luzon2.png" class ="luzon1">
+					<span>Luzon has fantastic beauty, charming sceneries and is also one of the best places to explore natural wonders. It is also a good place for photography, as a great deal of beautiful natural wonders can be found in Luzon.</span>
+					</a>
+					<div class="after">
+						<a href="luzon/luzon-store.html"><img  src="index-img/luzon2arrow.png"></a>
+					</div>
+				</div>
+			</div>
+			
+				<div class="mountain">  
+				<div id="cloud1" class="cloud">
+				<img src="http://img13.deviantart.net/b5ed/i/2013/033/d/0/cloud_fog_by_moonglowlilly-d5tk3l7.png">
+				</div>
+				<div id="cloud2" class="cloud">
+				<img src="http://img13.deviantart.net/b5ed/i/2013/033/d/0/cloud_fog_by_moonglowlilly-d5tk3l7.png">
+				</div>
+				<div id="cloud3" class="cloud"><img src="http://pngimg.com/uploads/cloud/cloud_PNG16.png"></div>
+				<div id="cloud4" class="cloud">
+				<img src="http://pngimg.com/uploads/cloud/cloud_PNG16.png"></div>
+				</div> 
+			
+				
+			
+		</section>
+<!--		<canvas id="waves" width="1080" height="1920"></canvas> -->
+		
+	</body>
+
+<body>
+</body>
+</html>
